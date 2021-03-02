@@ -2,8 +2,6 @@ name: Update main
   schedule:
     - cron:  '0 0 * * 0'
 jobs:
-  updateFork:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
