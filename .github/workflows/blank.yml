@@ -1,6 +1,20 @@
-- uses: actions/checkout@master
-
-      # Make changes to pull request here
-
+name: Update main
+  schedule:
+    - cron:  '0 0 * * 0'
+jobs:
+  updateFork:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: VictorOrts/VictorOrts.github.io
+      - name: Merge master to main
+        run: |
+          git checkout master
+          git merge main
+          git status
       - name: Create Pull Request
-        uses: VictorOrts/create-pull-request@main
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT }}
+          branch: upstream-changes
