@@ -10,7 +10,9 @@ jobs:
         with:
           repository: VictorOrts/VictorOrts.github.io
       - name: Merge master to main
-        run: |
+        run:
           git checkout master
           git merge main
           git status
+        if: github.event == 'push'
+
