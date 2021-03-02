@@ -1,7 +1,10 @@
 name: Update main
 on:
-    schedule:
-    - cron:  '0 0 * * 0'
+# Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ main ]
 jobs:
   pullRequest:
     runs-on: ubuntu-latest
